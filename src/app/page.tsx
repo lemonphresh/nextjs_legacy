@@ -4,7 +4,6 @@ import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/live";
 import imageUrlBuilder from "@sanity/image-url";
 
-import Image from "next/image";
 import LeadIn from "@/components/molecules/LeadIn/LeadIn";
 
 const PAGE_QUERY = defineQuery(`*[
@@ -51,7 +50,7 @@ export default async function IndexPage() {
                 href={`/community/${comm?.slug?.current}`}
               >
                 {comm.logo ? (
-                  <Image
+                  <img
                     style={{ backgroundColor: comm.bgColor }}
                     src={urlFor(comm.logo)?.width(75).height(75).url() || ""}
                     alt={comm.name || "Logo"}
