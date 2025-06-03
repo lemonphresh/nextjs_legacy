@@ -1,0 +1,97 @@
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+
+import { cn } from "@/lib/utils";
+
+const buttonVariants = cva(
+  "font-semibold focus:outline-none transition-all flex items-center justify-center gap-2",
+  {
+    variants: {
+      variant: {
+        default: "bg-navy-700 text-white hover:bg-navy-500 active:bg-navy-800",
+        secondary:
+          "bg-white text-gray-700 hover:bg-gray-100 active:bg-gray-300 border border-gray-800",
+        gold: "bg-gold-500 text-white hover:bg-gold-300 active:bg-gold-700",
+        clear:
+          "bg-transparent text-inherit hover:bg-transparent active:bg-transparent",
+      },
+      size: {
+        default: "px-4 py-2",
+        sm: "px-3 py-1 text-sm",
+        lg: "px-6 py-3 text-lg",
+        icon: "p-2",
+      },
+      circular: {
+        true: "rounded-full",
+        false: "rounded",
+      },
+    },
+    compoundVariants: [
+      {
+        circular: true,
+        size: "default",
+        className: "rounded-full",
+      },
+      {
+        circular: true,
+        size: "icon",
+        className: "!p-2 rounded-full",
+      },
+    ],
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+      circular: true,
+    },
+  }
+);
+
+const Button = React.forwardRef<
+  React.ComponentRef<"button">,
+  React.ComponentProps<"button"> &
+    VariantProps<typeof buttonVariants> & {
+      asChild?: boolean;
+      circular?: boolean;
+      icon?: React.ReactNode;
+      iconPosition?: "left" | "right";
+      children?: React.ReactNode;
+    }
+>(
+  (
+    {
+      className,
+      variant,
+      size,
+      circular,
+      asChild = false,
+      icon,
+      iconPosition = "left",
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : "button";
+    const buttonSize = !children && icon ? "icon" : size;
+
+    return (
+      <Comp
+        className={cn(
+          buttonVariants({ variant, size: buttonSize, circular, className })
+        )}
+        ref={ref}
+        style={{ cursor: "pointer" }}
+        {...props}
+      >
+        {iconPosition === "left" && icon}
+        {children}
+        {iconPosition === "right" && icon}
+      </Comp>
+    );
+  }
+);
+
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
