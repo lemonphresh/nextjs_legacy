@@ -1,17 +1,25 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Installation
 
-First, run the development server:
+This project uses [pnpm](https://pnpm.io/) for package management. If you have Node.js 16.13+ or later, you can enable pnpm using [corepack](https://nodejs.org/api/corepack.html):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+corepack enable pnpm
+```
+
+Then, install dependencies:
+
+```bash
+pnpm install
+```
+
+## Getting Started
+
+To run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
