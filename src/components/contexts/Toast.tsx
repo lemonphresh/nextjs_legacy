@@ -30,15 +30,18 @@ interface ToastProviderProps {
 export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const addToast = useCallback((message: string, type: ToastType = "info") => {
-    const id = Date.now();
-    setToasts((prevToasts) => [...prevToasts, { id, message, type }]);
-    setTimeout(() => removeToast(id), 3000); // this will auto remove the toast after 3 sec
-  }, []);
-
   const removeToast = useCallback((id: number) => {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
   }, []);
+
+  const addToast = useCallback(
+    (message: string, type: ToastType = "info") => {
+      const id = Date.now();
+      setToasts((prevToasts) => [...prevToasts, { id, message, type }]);
+      setTimeout(() => removeToast(id), 3000); // this will auto remove the toast after 3 sec
+    },
+    [removeToast]
+  );
 
   return (
     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
