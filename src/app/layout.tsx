@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeModeScript } from "flowbite-react";
 
 import { SanityLive } from "@/sanity/live";
 import { ToastContainer, ToastProvider } from "@/components/contexts/Toast";
@@ -43,7 +44,10 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
+      <head>
+        <ThemeModeScript />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-800`}
       >

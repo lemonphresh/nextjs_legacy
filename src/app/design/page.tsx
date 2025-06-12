@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Container from "@/components/atoms/Container/Container";
+import FlowbiteForm from "@/components/organisms/FlowbiteForm/FlowbiteForm";
 import { Button } from "@/components/shadcn-ui/button";
 import { CogIcon } from "@heroicons/react/24/outline";
 
@@ -44,6 +45,8 @@ export default async function EventPage({ params }: EventPageProps) {
           With Text
         </Button>
       </Container>
+
+      <FlowbiteForm />
     </main>
   );
 }
