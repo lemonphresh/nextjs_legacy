@@ -1,20 +1,20 @@
-import Link from "next/link";
-import { client } from "@/sanity/client";
-import { defineQuery } from "next-sanity";
-import { sanityFetch } from "@/sanity/live";
 import imageUrlBuilder from "@sanity/image-url";
+import Link from "next/link";
+import { defineQuery } from "next-sanity";
 
 import LeadIn from "@/components/molecules/LeadIn/LeadIn";
+import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/live";
 
 const PAGE_QUERY = defineQuery(`*[
   _type == "community"
   && defined(slug.current)
 ] | order(name asc){_id, name, bgColor, logo, slug}`);
 
-const { projectId, dataset } = client.config();
+const { dataset, projectId } = client.config();
 
 const urlFor = (source: string) =>
-  projectId && dataset ? imageUrlBuilder({ projectId, dataset }).image(source) : null;
+  projectId && dataset ? imageUrlBuilder({ dataset, projectId }).image(source) : null;
 
 interface Community {
   _id: string;
@@ -40,8 +40,8 @@ export default async function IndexPage() {
         <ul className="grid grid-cols-1 gap-6 mb-12">
           {data.map((comm) => (
             <li
-              className={`flex shadow-md bg-gray-50 hover:bg-gray-200 min-w-full md:min-w-150 mx-auto flex-row items-center rounded-lg`}
               key={comm._id}
+              className={`flex shadow-md bg-gray-50 hover:bg-gray-200 min-w-full md:min-w-150 mx-auto flex-row items-center rounded-lg`}
             >
               <Link
                 className="flex flex-row p-4 items-center"
@@ -49,11 +49,11 @@ export default async function IndexPage() {
               >
                 {comm.logo ? (
                   <img
-                    style={{ backgroundColor: comm.bgColor }}
-                    src={urlFor(comm.logo)?.width(75).height(75).url() || ""}
                     alt={comm.name || "Logo"}
                     className="aspect-square mr-4 p-1 overflow-hidden rounded-lg"
                     height={75}
+                    src={urlFor(comm.logo)?.width(75).height(75).url() || ""}
+                    style={{ backgroundColor: comm.bgColor }}
                     width={75}
                   />
                 ) : (

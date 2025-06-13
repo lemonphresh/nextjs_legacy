@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import FAQAccordion from "@/components/molecules/FaqAccordions/FaqAccordions";
-import { Button } from "@/components/shadcn-ui/button";
 import {
   EnvelopeIcon,
   PhoneIcon,
@@ -10,7 +8,10 @@ import {
   UserPlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { useState, FC } from "react";
+import { FC,useState } from "react";
+
+import FAQAccordion from "@/components/molecules/FaqAccordions/FaqAccordions";
+import { Button } from "@/components/shadcn-ui/button";
 
 const LegacySection: FC = () => {
   const [showSignIn, setShowSignIn] = useState<boolean>(false);
@@ -27,9 +28,9 @@ const LegacySection: FC = () => {
             </h2>
           </div>
           <Button
+            className="bg-[#a08449] max-w-fit text-white px-4 py-2 rounded"
             variant="gold"
             onClick={() => setShowSignIn(true)}
-            className="bg-[#a08449] max-w-fit text-white px-4 py-2 rounded"
           >
             Sign In
           </Button>
@@ -43,9 +44,9 @@ const LegacySection: FC = () => {
             </h2>
           </div>
           <Button
+            className="bg-[#a08449] max-w-fit text-white px-4 py-2 rounded"
             variant="gold"
             onClick={() => setShowCreate(true)}
-            className="bg-[#a08449] max-w-fit text-white px-4 py-2 rounded"
           >
             Create Account
           </Button>
@@ -93,10 +94,10 @@ const LegacySection: FC = () => {
         <div className="fixed inset-0 bg-black/30 z-50 flex justify-end">
           <div className="bg-white w-100 h-full relative p-6 shadow-lg animate-slide-in">
             <Button
-              onClick={() => setShowSignIn(false)}
+              className="absolute top-0 text-sm right-0 mb-4"
               icon={<XMarkIcon className="w-5 h-5" />}
               variant="clear"
-              className="absolute top-0 text-sm right-0 mb-4"
+              onClick={() => setShowSignIn(false)}
             />
             <UserCircleIcon className="w-14 h-14 text-[#bda56e] mb-2" />
             <h2 className="text-xl font-bold mb-2">Sign In</h2>
@@ -105,19 +106,19 @@ const LegacySection: FC = () => {
               loved ones. We're here for you any time.
             </p>
             <input
-              placeholder="Email"
               className="w-full mb-3 p-2 border rounded"
+              placeholder="Email"
             />
             <Button className="w-full text-white py-2 mt-10">Sign In</Button>
             <div className="inline-block mt-4">
               <span>Don't have an Account?</span>
               <Button
                 className="inline w-fit !p-0 mt-1 ml-1"
+                variant="clear"
                 onClick={() => {
                   setShowSignIn(false);
                   setShowCreate(true);
                 }}
-                variant="clear"
               >
                 Create Account
               </Button>
@@ -130,10 +131,10 @@ const LegacySection: FC = () => {
         <div className="fixed inset-0 bg-black/30 z-50 flex justify-end">
           <div className="bg-white w-100 h-full relative p-6 shadow-lg animate-slide-in">
             <Button
-              onClick={() => setShowCreate(false)}
+              className="absolute top-0 right-0 text-sm mb-4"
               icon={<XMarkIcon className="w-5 h-5" />}
               variant="clear"
-              className="absolute top-0 right-0 text-sm mb-4"
+              onClick={() => setShowCreate(false)}
             />
             <UserCircleIcon className="w-14 h-14 text-[#bda56e] mb-2" />
             <h2 className="text-xl font-bold mb-2">Create Account</h2>
@@ -141,25 +142,25 @@ const LegacySection: FC = () => {
               Save your progress, edit later, and share with others.
             </p>
             <input
+              className="w-full mb-3 p-2 border rounded"
               placeholder="Your email address"
               type="email"
-              className="w-full mb-3 p-2 border rounded"
             />
             <input
+              className="w-full mb-3 p-2 border rounded"
               placeholder="Confirm your email address"
               type="email"
-              className="w-full mb-3 p-2 border rounded"
             />
             <Button className="text-white py-2 mt-10">Create Account</Button>
             <div className="inline-block mt-4">
               <span>Already have an account?</span>
               <Button
                 className="inline w-fit !p-0 mt-1 ml-1"
+                variant="clear"
                 onClick={() => {
                   setShowCreate(false);
                   setShowSignIn(true);
                 }}
-                variant="clear"
               >
                 Sign In
               </Button>

@@ -1,4 +1,5 @@
 import * as Icons from "@phosphor-icons/react";
+
 import { cn } from "@/lib/utils";
 
 type IconProps = {
@@ -10,11 +11,11 @@ type IconProps = {
 };
 
 const Icon = ({
+  ariaLabel,
+  className,
   name,
   size = 24,
   weight = "regular",
-  className,
-  ariaLabel,
 }: IconProps) => {
   const IconComponent = Icons[name] as React.ElementType;
 

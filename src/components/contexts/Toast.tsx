@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useState, useContext, useCallback, ReactNode } from "react";
+import React, { createContext, ReactNode,useCallback, useContext, useState } from "react";
 
 type ToastType = "info" | "success" | "error";
 
@@ -38,7 +38,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   );
 
   return (
-    <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
+    <ToastContext.Provider value={{ addToast, removeToast, toasts }}>
       {children}
     </ToastContext.Provider>
   );
@@ -53,7 +53,7 @@ export const useToast = (): ToastContextType => {
 };
 
 export const ToastContainer: React.FC = () => {
-  const { toasts, removeToast } = useToast();
+  const { removeToast, toasts } = useToast();
 
   return (
     <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50">

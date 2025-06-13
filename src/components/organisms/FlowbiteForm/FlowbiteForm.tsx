@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import React, { useState } from "react";
 
 const FlowbiteForm: React.FC = () => {
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-    {}
-  );
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,20 +43,20 @@ const FlowbiteForm: React.FC = () => {
 
   return (
     <form
+      noValidate // disable browser's built-in validation
       className="flex max-w-md flex-col gap-4"
       onSubmit={handleSubmit}
-      noValidate // disable browser's built-in validation
     >
       <div>
         <div className="mb-2 block">
           <Label htmlFor="email1">Your email</Label>
         </div>
         <TextInput
+          color={errors.email ? "failure" : undefined}
           id="email1"
           name="email1"
-          type="email"
           placeholder="name@flowbite.com"
-          color={errors.email ? "failure" : undefined}
+          type="email"
         />
         {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
       </div>
@@ -67,14 +65,12 @@ const FlowbiteForm: React.FC = () => {
           <Label htmlFor="password1">Your password</Label>
         </div>
         <TextInput
+          color={errors.password ? "failure" : undefined}
           id="password1"
           name="password1"
           type="password"
-          color={errors.password ? "failure" : undefined}
         />
-        {errors.password && (
-          <p className="text-red-500 text-sm">{errors.password}</p>
-        )}
+        {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
       </div>
       <div className="flex items-center gap-2">
         <Checkbox id="remember" name="remember" />

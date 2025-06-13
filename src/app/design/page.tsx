@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import { CogIcon } from "@heroicons/react/24/outline";
+
 import Container from "@/components/atoms/Container/Container";
 import FlowbiteForm from "@/components/organisms/FlowbiteForm/FlowbiteForm";
 import { Button } from "@/components/shadcn-ui/button";
-import { CogIcon } from "@heroicons/react/24/outline";
 
 interface EventPageProps {
   params: Record<string, string>;
@@ -14,9 +15,9 @@ export default async function EventPage({ params }: EventPageProps) {
     <main className="flex container bg-gray-100 min-h-screen flex-col min-w-full p-12 px-5 sm:px-12">
       <Container className="flex flex-col items-center gap-6">
         <img
+          alt="Placeholder"
           className="rounded-md"
           src="https://placehold.co/100x100"
-          alt="Placeholder"
         />
         <p className="text-coral-400">
           some text with a custom theme color applied

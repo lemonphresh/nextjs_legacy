@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import { ArrowLeftIcon,ArrowRightIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
-import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { Button } from "@/components/shadcn-ui/button";
+import React, { ChangeEvent, FormEvent,useState } from "react";
+
 import { useObitWriter } from "@/components/contexts/ObitWriter";
+import { Button } from "@/components/shadcn-ui/button";
 
 // interface FormData {
 //   obituary: string;
@@ -57,72 +58,72 @@ const ObitWriterForm: React.FC = () => {
           {step === 1 ? (
             <>
               <textarea
+                required
+                className="w-full  rounded-md px-4 py-3 text-gray-800"
                 id="obituary"
                 name="obituary"
+                placeholder="Paste the obituary here, as well as any additional memories or thoughts you want to include."
                 rows={10}
                 value={formData.obituary}
                 onChange={handleChange}
-                required
-                className="w-full  rounded-md px-4 py-3 text-gray-800"
-                placeholder="Paste the obituary here, as well as any additional memories or thoughts you want to include."
               />
             </>
           ) : (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
+                  required
+                  className="border border-gray-300 rounded-md px-4 py-2"
                   name="firstName"
                   placeholder="First Name *"
                   value={formData.firstName}
                   onChange={handleChange}
-                  required
-                  className="border border-gray-300 rounded-md px-4 py-2"
                 />
                 <input
+                  required
+                  className="border border-gray-300 rounded-md px-4 py-2"
                   name="lastName"
                   placeholder="Last Name *"
                   value={formData.lastName}
                   onChange={handleChange}
-                  required
-                  className="border border-gray-300 rounded-md px-4 py-2"
                 />
               </div>
 
               <input
+                required
+                className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 name="dateOfDeath"
                 type="date"
                 value={formData.dateOfDeath}
                 onChange={handleChange}
-                required
-                className="border border-gray-300 rounded-md px-4 py-2 w-full"
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
+                  required
+                  className="border border-gray-300 rounded-md px-4 py-2"
                   name="cityOfDeath"
                   placeholder="City of death *"
                   value={formData.cityOfDeath}
                   onChange={handleChange}
-                  required
-                  className="border border-gray-300 rounded-md px-4 py-2"
                 />
                 <input
+                  required
+                  className="border border-gray-300 rounded-md px-4 py-2"
                   name="stateOfDeath"
                   placeholder="State of death *"
                   value={formData.stateOfDeath}
                   onChange={handleChange}
-                  required
-                  className="border border-gray-300 rounded-md px-4 py-2"
                 />
               </div>
 
               <input
+                required
+                className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 name="countryOfDeath"
                 placeholder="Country of death *"
                 value={formData.countryOfDeath}
                 onChange={handleChange}
-                required
-                className="border border-gray-300 rounded-md px-4 py-2 w-full"
               />
 
               <div>
@@ -133,10 +134,10 @@ const ObitWriterForm: React.FC = () => {
                   {["Yes", "No", "I don't know yet"].map((val) => (
                     <label key={val} className="flex items-center gap-2">
                       <input
-                        type="radio"
-                        name="hasService"
-                        value={val}
                         checked={formData.hasService === val}
+                        name="hasService"
+                        type="radio"
+                        value={val}
                         onChange={handleChange}
                       />
                       {val}
@@ -151,9 +152,9 @@ const ObitWriterForm: React.FC = () => {
         <div className="flex justify-between items-center">
           {step > 1 ? (
             <Button
+              icon={<ArrowLeftIcon className="w-5 h-5" />}
               type="button"
               onClick={prevStep}
-              icon={<ArrowLeftIcon className="w-5 h-5" />}
             >
               Back
             </Button>
@@ -163,18 +164,18 @@ const ObitWriterForm: React.FC = () => {
 
           {step === 1 ? (
             <Button
-              type="button"
               icon={<ArrowRightIcon className="w-5 h-5" />}
               iconPosition="right"
+              type="button"
               onClick={nextStep}
             >
               Continue
             </Button>
           ) : (
             <Button
-              type="submit"
               icon={<ArrowRightIcon className="w-5 h-5" />}
               iconPosition="right"
+              type="submit"
             >
               Continue
             </Button>

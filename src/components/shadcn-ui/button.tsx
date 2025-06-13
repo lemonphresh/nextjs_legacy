@@ -1,48 +1,48 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   "font-semibold focus:outline-none transition-all flex items-center justify-center gap-2",
   {
-    variants: {
-      variant: {
-        default: "bg-navy-700 text-white hover:bg-navy-500 active:bg-navy-800",
-        secondary:
-          "bg-white text-gray-700 hover:bg-gray-100 active:bg-gray-300 border border-gray-800",
-        gold: "bg-gold-500 text-white hover:bg-gold-300 active:bg-gold-700",
-        clear:
-          "bg-transparent text-inherit hover:bg-transparent active:bg-transparent",
-      },
-      size: {
-        default: "px-4 py-2",
-        sm: "px-3 py-1 text-sm",
-        lg: "px-6 py-3 text-lg",
-        icon: "p-2",
-      },
-      circular: {
-        true: "rounded-full",
-        false: "rounded",
-      },
-    },
     compoundVariants: [
       {
         circular: true,
-        size: "default",
         className: "rounded-full",
+        size: "default",
       },
       {
         circular: true,
-        size: "icon",
         className: "!p-2 rounded-full",
+        size: "icon",
       },
     ],
     defaultVariants: {
-      variant: "default",
-      size: "default",
       circular: true,
+      size: "default",
+      variant: "default",
+    },
+    variants: {
+      circular: {
+        false: "rounded",
+        true: "rounded-full",
+      },
+      size: {
+        default: "px-4 py-2",
+        icon: "p-2",
+        lg: "px-6 py-3 text-lg",
+        sm: "px-3 py-1 text-sm",
+      },
+      variant: {
+        clear:
+          "bg-transparent text-inherit hover:bg-transparent active:bg-transparent",
+        default: "bg-navy-700 text-white hover:bg-navy-500 active:bg-navy-800",
+        gold: "bg-gold-500 text-white hover:bg-gold-300 active:bg-gold-700",
+        secondary:
+          "bg-white text-gray-700 hover:bg-gray-100 active:bg-gray-300 border border-gray-800",
+      },
     },
   }
 );
@@ -60,14 +60,14 @@ const Button = React.forwardRef<
 >(
   (
     {
-      className,
-      variant,
-      size,
-      circular,
       asChild = false,
+      children,
+      circular,
+      className,
       icon,
       iconPosition = "left",
-      children,
+      size,
+      variant,
       ...props
     },
     ref
@@ -77,10 +77,10 @@ const Button = React.forwardRef<
 
     return (
       <Comp
-        className={cn(
-          buttonVariants({ variant, size: buttonSize, circular, className })
-        )}
         ref={ref}
+        className={cn(
+          buttonVariants({ circular, className, size: buttonSize, variant })
+        )}
         style={{ cursor: "pointer" }}
         {...props}
       >
