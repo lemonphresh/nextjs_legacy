@@ -38,6 +38,58 @@ pnpm storybook
 
 This will launch Storybook at [http://localhost:6006](http://localhost:6006) by default.
 
+## Testing in This Project
+
+This project uses two main tools for testing:
+
+### 1. Vitest
+
+[Vitest](https://vitest.dev/) is a fast unit testing framework powered by Vite. It is used for running unit and integration tests on your application code.
+
+**Common Vitest Commands:**
+
+- `pnpm test` or `pnpm vitest`: Runs all tests in watch mode.
+- `pnpm vitest run`: Runs all tests once (useful for CI).
+- `pnpm vitest --coverage`: Runs tests and generates a code coverage report.
+
+**Test Files:**
+
+- Place your test files alongside your source files, using the `.test.ts` or `.spec.ts` (or `.js`) suffix.
+
+**Configuration:**
+
+- Vitest is configured via the `vitest.config.ts` file at the root of the project.
+
+---
+
+### 2. Playwright
+
+[Playwright](https://playwright.dev/) is used for end-to-end (E2E) testing, simulating real user interactions in a browser.
+
+**Common Playwright Commands:**
+
+- `pnpm playwright test`: Runs all Playwright E2E tests.
+- `pnpm playwright codegen <url>`: Launches the Playwright Codegen tool, which records your browser actions and generates test code automatically. Replace `<url>` with the page you want to record.
+- `pnpm playwright show-report`: Opens the HTML report for the latest test run.
+
+**Test Files:**
+
+- Place your Playwright tests in the `tests/` directory, using the `.spec.ts` suffix.
+
+**Configuration:**
+
+- Playwright is configured via the `playwright.config.ts` file at the root of the project.
+
+---
+
+### Integration Notes
+
+- Use Vitest for fast, isolated unit and integration tests.
+- Use Playwright for full end-to-end tests that require a browser environment.
+- Both tools can be run independently or as part of your CI pipeline.
+
+For more details, refer to the official [Vitest documentation](https://vitest.dev/) and [Playwright documentation](https://playwright.dev/).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
