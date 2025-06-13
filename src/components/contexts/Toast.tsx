@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useCallback,
-  ReactNode,
-} from "react";
+import React, { createContext, useState, useContext, useCallback, ReactNode } from "react";
 
 type ToastType = "info" | "success" | "error";
 
@@ -40,7 +34,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
       setToasts((prevToasts) => [...prevToasts, { id, message, type }]);
       setTimeout(() => removeToast(id), 3000); // this will auto remove the toast after 3 sec
     },
-    [removeToast]
+    [removeToast],
   );
 
   return (
