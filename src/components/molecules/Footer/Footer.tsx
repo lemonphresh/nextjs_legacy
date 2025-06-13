@@ -4,19 +4,19 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-[#f9f6ef] text-center text-sm text-gray-700 py-10">
       <div className="flex justify-center gap-4 flex-wrap text-[#006699] font-medium mb-4">
-        <a href="#" className="hover:underline">
+        <a className="hover:underline" href="#">
           Contact Us
         </a>
         <span className="text-gray-400">|</span>
-        <a href="#" className="hover:underline">
+        <a className="hover:underline" href="#">
           FAQ
         </a>
         <span className="text-gray-400">|</span>
-        <a href="#" className="hover:underline">
+        <a className="hover:underline" href="#">
           Privacy Policy
         </a>
         <span className="text-gray-400">|</span>
-        <a href="#" className="hover:underline">
+        <a className="hover:underline" href="#">
           Terms of Use
         </a>
       </div>

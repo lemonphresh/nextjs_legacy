@@ -1,10 +1,11 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/nextjs";
+import React from "react";
+
 import FaqAccordions from "./FaqAccordions";
 
 export default {
-  title: "Components/Molecules/FaqAccordions",
   component: FaqAccordions,
+  title: "Components/Molecules/FaqAccordions",
 } as Meta;
 
 const Template: StoryFn = (args) => <FaqAccordions {...args} />;

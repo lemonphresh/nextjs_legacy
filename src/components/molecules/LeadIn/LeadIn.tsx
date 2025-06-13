@@ -1,5 +1,6 @@
 "use client";
 import React, { CSSProperties } from "react";
+
 import { useToast } from "../../contexts/Toast";
 import { Button } from "../../shadcn-ui/button";
 
@@ -32,8 +33,8 @@ const LeadIn: React.FC<LeadInProps> = ({
   const backgroundStyle: CSSProperties = bgImage
     ? {
         backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
         backgroundPosition: "center",
+        backgroundSize: "cover",
       }
     : {};
 

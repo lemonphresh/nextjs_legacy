@@ -1,6 +1,13 @@
 @import "tailwindcss";
+@source "../node_modules/flowbite";
+@source "../../.flowbite-react/class-list.json";
+@plugin "flowbite-react/plugin/tailwindcss";
+@import "flowbite/src/themes/default";
 @import "../theme/index.css";
 @import "tw-animate-css";
+
+@plugin "flowbite/plugin";
+
 /* 
 ---break--- */
 @custom-variant dark (&:is(.dark *));

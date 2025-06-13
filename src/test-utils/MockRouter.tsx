@@ -10,34 +10,34 @@ type MockRouterProps = {
 };
 
 const MockRouter: React.FC<MockRouterProps> = ({
+  asPath = "/",
   children,
   pathname = "/",
-  route = "/",
   query = {},
-  asPath = "/",
+  route = "/",
 }) => {
   const mockRouter = {
-    pathname,
-    route,
-    query,
     asPath,
-    push: () => Promise.resolve(true),
-    replace: () => Promise.resolve(true),
-    reload: () => {},
     back: () => {},
-    prefetch: () => Promise.resolve(),
+    basePath: "",
     beforePopState: () => {},
     events: {
-      on: () => {},
-      off: () => {},
       emit: () => {},
+      off: () => {},
+      on: () => {},
     },
-    isFallback: false,
-    basePath: "",
-    isLocaleDomain: false,
     forward: () => {},
-    isReady: true,
+    isFallback: false,
+    isLocaleDomain: false,
     isPreview: false,
+    isReady: true,
+    pathname,
+    prefetch: () => Promise.resolve(),
+    push: () => Promise.resolve(true),
+    query,
+    reload: () => {},
+    replace: () => Promise.resolve(true),
+    route,
   };
 
   return (
