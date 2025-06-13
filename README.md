@@ -1,106 +1,227 @@
+# Legacy Nextjs
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Installation
+It includes a modern front-end setup powered by:
 
-This project uses [pnpm](https://pnpm.io/) for package management. If you have Node.js 16.13+ or later, you can enable pnpm using [corepack](https://nodejs.org/api/corepack.html):
+- **Next.js App Router**
+- **TypeScript**
+- [**pnpm**](https://pnpm.io/) for dependency management
+- **Storybook** for UI development
+- **Vitest** for unit/integration testing
+- **Playwright** for end-to-end browser testing
+
+---
+
+## Getting Started
+
+### 1. Install Dependencies
+
+We use `pnpm` for fast and deterministic package installs. If you haven’t enabled `pnpm` yet, run:
 
 ```bash
 corepack enable pnpm
 ```
 
-Then, install dependencies:
+Then install dependencies:
 
 ```bash
 pnpm install
 ```
 
-## Getting Started
+### 2. Run the Development Server
 
-To run the development server:
+To start the Next.js dev server:
 
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Editing Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The main entry page is located in:
 
-## Running Storybook
+```
+src/app/page.tsx
+```
 
-To start Storybook locally, run:
+As you modify this or other files under `app/`, your browser will hot-reload with the changes.
+
+---
+
+## Theming with Design Tokens
+
+We use a design token system synced with our Figma legacy style guide.
+
+### How to Update Colors, Spacing, or Other Tokens
+
+1. Open the token source file:
+
+```
+src/app/theme/tokens.json
+```
+
+2. Update the values as needed. These may include:
+
+```json
+{
+  "color-primary": "#004c99",
+  "font-size-base": "16px"
+}
+```
+
+3. Then regenerate the CSS variables with:
+
+```bash
+pnpm generate-css-vars
+```
+
+This will regenerate:
+
+```
+src/app/theme/legacy-theme-tokens.css
+```
+
+That file contains all `:root`-scoped CSS variables used across the app, such as:
+
+```css
+:root {
+  --color-primary: #004c99;
+  --font-size-base: 16px;
+}
+```
+
+You can now use these in any component or stylesheet.
+
+---
+
+## Testing
+
+### Unit + Integration Tests: Vitest
+
+We use [Vitest](https://vitest.dev/) for fast, Vite-powered testing of individual units and component logic.
+
+#### Common Commands
+
+```bash
+pnpm test              # Runs tests in watch mode
+pnpm vitest run        # Runs all tests once (for CI)
+pnpm vitest --coverage # Generates a coverage report
+```
+
+#### Test Structure
+
+- All test files live alongside the files they test.
+- Use `.test.ts[x]` or `.spec.ts[x]` naming convention.
+
+#### Configuration
+
+Vitest is configured in:
+
+```
+vitest.config.ts
+```
+
+### End-to-End Tests: Playwright
+
+We use [Playwright](https://playwright.dev/) for automated browser testing.
+
+#### Common Commands
+
+```bash
+pnpm playwright test             # Run all E2E tests
+pnpm playwright codegen <url>   # Record and generate test code
+pnpm playwright show-report     # Open the last test report
+```
+
+#### Test Structure
+
+- All Playwright tests live in the `tests/` directory.
+- Test files should use `.spec.ts` as a suffix.
+
+#### Configuration
+
+Playwright is configured in:
+
+```
+playwright.config.ts
+```
+
+This includes:
+
+- Base URL (usually `http://localhost:3000`)
+- Auto-starting the dev server via `pnpm dev`
+- Tracing and test reporting
+
+> 💡 Playwright can simulate user interaction, test full flows, and verify that your app works in real browsers like Chromium and Firefox.
+
+---
+
+## UI Components via Storybook
+
+This project includes [Storybook](https://storybook.js.org/) to build, preview, and test components in isolation.
+
+### Run Storybook Locally
 
 ```bash
 pnpm storybook
 ```
 
-This will launch Storybook at [http://localhost:6006](http://localhost:6006) by default.
+Then visit:
 
-## Testing in This Project
+```
+http://localhost:6006
+```
 
-This project uses two main tools for testing:
-
-### 1. Vitest
-
-[Vitest](https://vitest.dev/) is a fast unit testing framework powered by Vite. It is used for running unit and integration tests on your application code.
-
-**Common Vitest Commands:**
-
-- `pnpm test` or `pnpm vitest`: Runs all tests in watch mode.
-- `pnpm vitest run`: Runs all tests once (useful for CI).
-- `pnpm vitest --coverage`: Runs tests and generates a code coverage report.
-
-**Test Files:**
-
-- Place your test files alongside your source files, using the `.test.ts` or `.spec.ts` (or `.js`) suffix.
-
-**Configuration:**
-
-- Vitest is configured via the `vitest.config.ts` file at the root of the project.
+This is a great way to review component styles and behavior before integration.
 
 ---
 
-### 2. Playwright
+## Useful Scripts
 
-[Playwright](https://playwright.dev/) is used for end-to-end (E2E) testing, simulating real user interactions in a browser.
-
-**Common Playwright Commands:**
-
-- `pnpm playwright test`: Runs all Playwright E2E tests.
-- `pnpm playwright codegen <url>`: Launches the Playwright Codegen tool, which records your browser actions and generates test code automatically. Replace `<url>` with the page you want to record.
-- `pnpm playwright show-report`: Opens the HTML report for the latest test run.
-
-**Test Files:**
-
-- Place your Playwright tests in the `tests/` directory, using the `.spec.ts` suffix.
-
-**Configuration:**
-
-- Playwright is configured via the `playwright.config.ts` file at the root of the project.
+| Script                   | Description                                  |
+| ------------------------ | -------------------------------------------- |
+| `pnpm dev`               | Starts the Next.js dev server with Turbopack |
+| `pnpm build`             | Builds the production bundle                 |
+| `pnpm start`             | Runs the built app (after `build`)           |
+| `pnpm lint`              | Runs ESLint across the codebase              |
+| `pnpm generate-css-vars` | Rebuilds CSS variables from `tokens.json`    |
+| `pnpm storybook`         | Starts Storybook on port 6006                |
+| `pnpm build-storybook`   | Builds the static Storybook site             |
+| `pnpm vitest`            | Runs all Vitest tests once (for CI)          |
+| `pnpm vitest:watch`      | Runs Vitest in watch mode                    |
+| `pnpm test:e2e`          | Runs Playwright end-to-end tests             |
+| `pnpm test:e2e:ui`       | Runs Playwright E2E tests in UI mode         |
+| `pnpm postinstall`       | Applies Flowbite React patch after install   |
 
 ---
 
-### Integration Notes
+## Project Structure
 
-- Use Vitest for fast, isolated unit and integration tests.
-- Use Playwright for full end-to-end tests that require a browser environment.
-- Both tools can be run independently or as part of your CI pipeline.
+```
+src/
+├── app/              # Next.js App Router pages and layouts
+├── components/       # Reusable UI components
+├── contexts/         # React context providers (e.g. Toast)
+├── theme/            # Design tokens and generated CSS
+├── tests/            # Playwright end-to-end test files
+├── utils/            # Helpers and utilities
+```
 
-For more details, refer to the official [Vitest documentation](https://vitest.dev/) and [Playwright documentation](https://playwright.dev/).
+---
 
-## Learn More
+## 📖 Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Vitest Documentation](https://vitest.dev/)
+- [Playwright Docs](https://playwright.dev/)
+- [Storybook Docs](https://storybook.js.org/)
+- [pnpm Docs](https://pnpm.io/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 💖 Maintainers
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is maintained by the Legacy team.
