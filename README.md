@@ -1,17 +1,25 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Installation
 
-First, run the development server:
+This project uses [pnpm](https://pnpm.io/) for package management. If you have Node.js 16.13+ or later, you can enable pnpm using [corepack](https://nodejs.org/api/corepack.html):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+corepack enable pnpm
+```
+
+Then, install dependencies:
+
+```bash
+pnpm install
+```
+
+## Getting Started
+
+To run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -19,6 +27,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Running Storybook
+
+To start Storybook locally, run:
+
+```bash
+pnpm storybook
+```
+
+This will launch Storybook at [http://localhost:6006](http://localhost:6006) by default.
 
 ## Learn More
 
