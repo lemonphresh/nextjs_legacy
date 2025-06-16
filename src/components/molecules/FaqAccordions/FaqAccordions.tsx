@@ -31,7 +31,7 @@ All print Obituaries also include placement on Legacy.com.`,
   },
 ];
 
-export default function FAQAccordion() {
+export default function FAQAccordions() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {

@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { FC, useState } from "react";
 
-import FAQAccordion from "@/components/molecules/FaqAccordions/FaqAccordions";
+import FAQAccordions from "@/components/molecules/FaqAccordions/FaqAccordions";
 import { Button } from "@/components/shadcn-ui/button";
 
 const LegacySection: FC = () => {
@@ -84,7 +84,7 @@ const LegacySection: FC = () => {
           </div>
         </div>
 
-        <FAQAccordion />
+        <FAQAccordions />
       </div>
 
       {/* side panels */}
