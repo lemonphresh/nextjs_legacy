@@ -14,28 +14,16 @@ export default async function EventPage({ params }: EventPageProps) {
   return (
     <main className="flex container bg-gray-100 min-h-screen flex-col min-w-full p-12 px-5 sm:px-12">
       <Container className="flex flex-col items-center gap-6">
-        <img
-          alt="Placeholder"
-          className="rounded-md"
-          src="https://placehold.co/100x100"
-        />
-        <p className="text-coral-400">
-          some text with a custom theme color applied
-        </p>
+        <img alt="Placeholder" className="rounded-md" src="https://placehold.co/100x100" />
+        <p className="text-coral-400">some text with a custom theme color applied</p>
         <Button>Primary</Button>
         <Button circular={false} variant="secondary">
           Secondary
         </Button>
         <Button variant="gold">Gold</Button>
         <Button variant="clear">Clear</Button>
-        <Button
-          className="bg-seaFoam-300 p-3"
-          icon={<CogIcon className="w-5 h-5" />}
-        />
-        <Button
-          className="bg-seaFoam-600 p-3"
-          icon={<CogIcon className="w-5 h-5" />}
-        >
+        <Button className="bg-seaFoam-300 p-3" icon={<CogIcon className="w-5 h-5" />} />
+        <Button className="bg-seaFoam-600 p-3" icon={<CogIcon className="w-5 h-5" />}>
           With Text
         </Button>
         <Button

@@ -18,11 +18,7 @@ const Navbar: React.FC = () => {
           style={{ cursor: "pointer" }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? (
-            <XMarkIcon className="w-6 h-6" />
-          ) : (
-            <Bars3Icon className="w-6 h-6" />
-          )}
+          {isMenuOpen ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
         </button>
 
         <div className="text-[28px] font-serif text-[#006699] tracking-tight select-none">

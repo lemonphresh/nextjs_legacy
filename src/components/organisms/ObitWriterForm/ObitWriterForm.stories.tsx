@@ -20,9 +20,7 @@ export default {
   title: "Components/Organisms/ObitWriterForm",
 } as Meta;
 
-const Template: StoryFn<typeof ObitWriterForm> = (args) => (
-  <ObitWriterForm {...args} />
-);
+const Template: StoryFn<typeof ObitWriterForm> = (args) => <ObitWriterForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

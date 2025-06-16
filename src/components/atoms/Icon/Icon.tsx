@@ -10,13 +10,7 @@ type IconProps = {
   ariaLabel?: string;
 };
 
-const Icon = ({
-  ariaLabel,
-  className,
-  name,
-  size = 24,
-  weight = "regular",
-}: IconProps) => {
+const Icon = ({ ariaLabel, className, name, size = 24, weight = "regular" }: IconProps) => {
   const IconComponent = Icons[name] as React.ElementType;
 
   if (!IconComponent) return null;

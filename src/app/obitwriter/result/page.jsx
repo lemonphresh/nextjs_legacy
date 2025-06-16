@@ -42,13 +42,11 @@ export default function IndexPage() {
           Obit Writer
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900">
-          {firstName}'s Story
-        </h1>
+        <h1 className="text-2xl font-bold text-gray-900">{firstName}'s Story</h1>
 
         <div className="rounded-tr-xl rounded-br-xl rounded-bl-xl rounded-tl-md bg-[#EDF3F2] px-6 py-4 text-md text-gray-700 leading-relaxed">
-          Take a moment to review the obituary one more time. Once you're ready,
-          you can choose how you want to publish it.
+          Take a moment to review the obituary one more time. Once you're ready, you can choose how
+          you want to publish it.
         </div>
 
         <div className="relative rounded-xl border-3 border-[#B59C52] bg-[#FAF6EF] px-6 py-5">
@@ -73,9 +71,7 @@ export default function IndexPage() {
             {firstName} {lastName}'s Story
           </h2>
 
-          <p className="text-md text-[#2C2310] mt-1">
-            Died {dateOfDeath.split("-")[0]}
-          </p>
+          <p className="text-md text-[#2C2310] mt-1">Died {dateOfDeath.split("-")[0]}</p>
 
           <hr className="my-4 border-[#B59C52]" />
 

@@ -1,8 +1,8 @@
-import { act, cleanup,fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
-import { afterEach,beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { ToastContainer,ToastProvider, useToast } from "../Toast";
+import { ToastContainer, ToastProvider, useToast } from "../Toast";
 
 function TestAddButton() {
   const { addToast } = useToast();

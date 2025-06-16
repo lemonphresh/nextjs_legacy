@@ -40,11 +40,7 @@ const MockRouter: React.FC<MockRouterProps> = ({
     route,
   };
 
-  return (
-    <RouterContext.Provider value={mockRouter}>
-      {children}
-    </RouterContext.Provider>
-  );
+  return <RouterContext.Provider value={mockRouter}>{children}</RouterContext.Provider>;
 };
 
 export default MockRouter;

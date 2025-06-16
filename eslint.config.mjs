@@ -1,5 +1,6 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+// existing imports...
 import { FlatCompat } from "@eslint/eslintrc";
+import jest from "eslint-plugin-jest";
 import reactPlugin from "eslint-plugin-react";
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintPluginSortDestructureKeys from "eslint-plugin-sort-destructure-keys";
@@ -19,15 +20,17 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   ...storybook.configs["flat/recommended"],
 
+  // global config
   {
     plugins: {
+      jest,
       react: reactPlugin,
       "simple-import-sort": eslintPluginSimpleImportSort,
       "sort-destructure-keys": eslintPluginSortDestructureKeys,
       "sort-keys-fix": eslintPluginSortKeysFix,
     },
     rules: {
-      // react JSX props sorting (alphabetically)
+      "object-curly-spacing": ["warn", "always"],
       "react/jsx-sort-props": [
         "warn",
         {
@@ -39,22 +42,30 @@ const eslintConfig = [
           shorthandLast: false,
         },
       ],
-
       "simple-import-sort/exports": "warn",
-
-      // sort imports and exports alphabetically
       "simple-import-sort/imports": "warn",
-
-      // sort destructured keys alphabetically
       "sort-destructure-keys/sort-destructure-keys": "warn",
-
-      // sort object keys alphabetically
       "sort-keys-fix/sort-keys-fix": "warn",
     },
     settings: {
       react: {
         version: "detect",
       },
+    },
+  },
+
+  // test file-specific config
+  {
+    files: ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
+    languageOptions: {
+      globals: {
+        ...jest.environments.globals.jest,
+      },
+    },
+    rules: {
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
     },
   },
 ];

@@ -10,9 +10,7 @@ export default {
   title: "Components/Organisms/FlowbiteForm",
 } as Meta;
 
-const Template: StoryFn<typeof FlowbiteForm> = (args) => (
-  <FlowbiteForm {...args} />
-);
+const Template: StoryFn<typeof FlowbiteForm> = (args) => <FlowbiteForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

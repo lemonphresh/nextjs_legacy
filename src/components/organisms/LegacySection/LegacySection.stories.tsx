@@ -8,9 +8,7 @@ export default {
   title: "Components/Organisms/LegacySection",
 } as Meta;
 
-const Template: StoryFn<typeof LegacySection> = (args) => (
-  <LegacySection {...args} />
-);
+const Template: StoryFn<typeof LegacySection> = (args) => <LegacySection {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

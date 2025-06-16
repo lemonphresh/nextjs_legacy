@@ -24,9 +24,7 @@ const Footer: React.FC = () => {
       <div className="text-[#006699] font-serif text-lg font-medium">
         Legacy<sup className="text-xs ">®</sup>
       </div>
-      <div className="text-gray-600 text-xs mt-1">
-        ©2025 Legacy.com. All rights reserved.
-      </div>
+      <div className="text-gray-600 text-xs mt-1">©2025 Legacy.com. All rights reserved.</div>
     </footer>
   );
 };

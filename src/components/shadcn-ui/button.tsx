@@ -36,15 +36,14 @@ const buttonVariants = cva(
         sm: "px-3 py-1 text-sm",
       },
       variant: {
-        clear:
-          "bg-transparent text-inherit hover:bg-transparent active:bg-transparent",
+        clear: "bg-transparent text-inherit hover:bg-transparent active:bg-transparent",
         default: "bg-navy-700 text-white hover:bg-navy-500 active:bg-navy-800",
         gold: "bg-gold-500 text-white hover:bg-gold-300 active:bg-gold-700",
         secondary:
           "bg-white text-gray-700 hover:bg-gray-100 active:bg-gray-300 border border-gray-800",
       },
     },
-  }
+  },
 );
 
 const Button = React.forwardRef<
@@ -70,7 +69,7 @@ const Button = React.forwardRef<
       variant,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : "button";
     const buttonSize = !children && icon ? "icon" : size;
@@ -78,9 +77,7 @@ const Button = React.forwardRef<
     return (
       <Comp
         ref={ref}
-        className={cn(
-          buttonVariants({ circular, className, size: buttonSize, variant })
-        )}
+        className={cn(buttonVariants({ circular, className, size: buttonSize, variant }))}
         style={{ cursor: "pointer" }}
         {...props}
       >
@@ -89,7 +86,7 @@ const Button = React.forwardRef<
         {iconPosition === "right" && icon}
       </Comp>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

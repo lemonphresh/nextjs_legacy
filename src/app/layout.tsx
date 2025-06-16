@@ -30,8 +30,7 @@ export const metadata: {
   authors: { name: string; url: string }[];
 } = {
   authors: [{ name: "Legacy.com", url: "https://www.legacy.com" }],
-  description:
-    "This is my super frickin cool Next.js app using the App Router.",
+  description: "This is my super frickin cool Next.js app using the App Router.",
   keywords: ["Next.js", "SEO", "Tailwind", "Sanity CMS"],
   title: {
     default: "Lemon",
@@ -49,9 +48,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <ThemeModeScript />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-800`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-800`}>
         <ObitWriterProvider>
           <ToastProvider>
             <Navbar />

@@ -1,7 +1,7 @@
 "use client";
-import { ArrowLeftIcon,ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
-import React, { ChangeEvent, FormEvent,useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
 import { useObitWriter } from "@/components/contexts/ObitWriter";
 import { Button } from "@/components/shadcn-ui/button";
@@ -22,9 +22,7 @@ const ObitWriterForm: React.FC = () => {
   const [step, setStep] = useState<number>(1);
   const router = useRouter();
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     updateFormData(name as keyof typeof formData, value);
   };
@@ -40,12 +38,8 @@ const ObitWriterForm: React.FC = () => {
 
   return (
     <div className="px-4 sm:px-6 py-8 w-full max-w-250 space-y-3">
-      <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-        Obit Writer
-      </div>
-      <h1 className="text-2xl font-semibold mb-6">
-        Tell us about your loved one
-      </h1>
+      <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Obit Writer</div>
+      <h1 className="text-2xl font-semibold mb-6">Tell us about your loved one</h1>
 
       <div className="bg-[#ECF1EF] rounded-lg rounded-tl-xs px-4 py-3 mb-4 text-gray-700">
         {step === 1
@@ -127,9 +121,7 @@ const ObitWriterForm: React.FC = () => {
               />
 
               <div>
-                <p className="mb-2">
-                  Will you be holding a Funeral or Memorial service?
-                </p>
+                <p className="mb-2">Will you be holding a Funeral or Memorial service?</p>
                 <div className="flex gap-4">
                   {["Yes", "No", "I don't know yet"].map((val) => (
                     <label key={val} className="flex items-center gap-2">
@@ -151,11 +143,7 @@ const ObitWriterForm: React.FC = () => {
 
         <div className="flex justify-between items-center">
           {step > 1 ? (
-            <Button
-              icon={<ArrowLeftIcon className="w-5 h-5" />}
-              type="button"
-              onClick={prevStep}
-            >
+            <Button icon={<ArrowLeftIcon className="w-5 h-5" />} type="button" onClick={prevStep}>
               Back
             </Button>
           ) : (
