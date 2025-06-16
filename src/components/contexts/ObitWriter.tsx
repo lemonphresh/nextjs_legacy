@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 interface FormData {
   firstName: string;
@@ -18,27 +18,23 @@ interface ObitWriterContextType {
   updateFormData: (name: keyof FormData, value: string) => void;
 }
 
-const ObitWriterContext = createContext<ObitWriterContextType | undefined>(
-  undefined
-);
+const ObitWriterContext = createContext<ObitWriterContextType | undefined>(undefined);
 
 interface ObitWriterProviderProps {
   children: ReactNode;
 }
 
-export const ObitWriterProvider: React.FC<ObitWriterProviderProps> = ({
-  children,
-}) => {
+export const ObitWriterProvider: React.FC<ObitWriterProviderProps> = ({ children }) => {
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    dateOfDeath: "",
-    obituary: "",
     age: "",
-    stateOfDeath: "",
     cityOfDeath: "",
     countryOfDeath: "",
+    dateOfDeath: "",
+    firstName: "",
     hasService: "",
+    lastName: "",
+    obituary: "",
+    stateOfDeath: "",
   });
 
   const updateFormData = (name: keyof FormData, value: string) => {

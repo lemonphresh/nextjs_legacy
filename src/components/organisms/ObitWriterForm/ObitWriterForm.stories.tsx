@@ -1,11 +1,12 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/nextjs";
-import ObitWriterForm from "./ObitWriterForm";
-import MockRouter from "@/test-utils/MockRouter";
+import React from "react";
+
 import { ObitWriterProvider } from "@/components/contexts/ObitWriter";
+import MockRouter from "@/test-utils/MockRouter";
+
+import ObitWriterForm from "./ObitWriterForm";
 
 export default {
-  title: "Components/Organisms/ObitWriterForm",
   component: ObitWriterForm,
   decorators: [
     (Story) => (
@@ -16,19 +17,18 @@ export default {
       </MockRouter>
     ),
   ],
+  title: "Components/Organisms/ObitWriterForm",
 } as Meta;
 
-const Template: StoryFn<typeof ObitWriterForm> = (args) => (
-  <ObitWriterForm {...args} />
-);
+const Template: StoryFn<typeof ObitWriterForm> = (args) => <ObitWriterForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   initialValues: {
-    name: "",
+    biography: "",
     dateOfBirth: "",
     dateOfDeath: "",
-    biography: "",
+    name: "",
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSubmit: (values: any) => {

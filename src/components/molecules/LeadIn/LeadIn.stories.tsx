@@ -1,11 +1,13 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/nextjs";
-import LeadIn from "./LeadIn";
+import React from "react";
+
 import { ToastProvider } from "@/components/contexts/Toast";
 
+import LeadIn from "./LeadIn";
+
 export default {
-  title: "Components/Molecules/LeadIn",
   component: LeadIn,
+  title: "Components/Molecules/LeadIn",
 } as Meta;
 
 const Template: StoryFn<typeof LeadIn> = (args) => (
